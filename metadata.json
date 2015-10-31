@@ -1,0 +1,14 @@
+{
+  "name": "tombuildsstuff/windows_autologin",
+  "version": "1.0.0",
+  "author": "Tom Harvey",
+  "summary": "A puppet module to configure auto login on Windows",
+  "license": "MIT",
+  "source": "https://github.com/tombuildsstuff/puppet-windows_autologin",
+  "project_page": "https://github.com/tombuildsstuff/puppet-windows_autologin",
+  "issues_url": "https://github.com/tombuildsstuff/puppet-windows_autologin/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">=3.0.0"},
+    {"name":"puppetlabs/registry","version_requirement":">=1.1.0"}
+  ]
+}
