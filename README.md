@@ -45,7 +45,7 @@ class { 'windows_autologin':
 
 Testing
 -------
-This module's been tested on Windows Server 2008 R2 - it *should* work on 2012 as well, but I haven't tested it..
+This module's been tested on Windows Server 2008/2012 R2
 
 Contributing
 ------------
