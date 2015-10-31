@@ -1,6 +1,6 @@
 {
   "name": "tombuildsstuff/windows_autologin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Tom Harvey",
   "summary": "A puppet module to configure auto login on Windows",
   "license": "MIT",
