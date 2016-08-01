@@ -9,7 +9,7 @@ Installation
 
 Add this to your Puppetfile:
 ```puppet
-mod 'tombuildsstuff/windows_autologin', '1.0.2'
+mod 'tombuildsstuff/windows_autologin', '1.1.0'
 ````
 
 Usage

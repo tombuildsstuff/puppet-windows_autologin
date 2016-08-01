@@ -18,13 +18,13 @@
 #
 
 class windows_autologin(
-  $ensure   = 'disabled',
+  $ensure   = 'absent',
   $domain   = $::fqdn,
   $username = undef,
   $password = undef
 )
 {
-  validate_re($ensure, ['^(enabled|disabled)$'])
+  validate_re($ensure, ['^(present|absent)$'])
 
   case downcase($::osfamily)
   {
@@ -33,7 +33,7 @@ class windows_autologin(
         $registry_path = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
         case downcase($ensure)
         {
-          'enabled':
+          'present':
           {
             validate_string($domain)
             validate_string($username)
