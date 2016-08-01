@@ -19,7 +19,7 @@ Enabling Auto-Login (on a local computer):
 
 ```puppet
 class { 'windows_autologin':
-  ensure   => 'enabled',
+  ensure   => 'present',
   username => 'myuser',
   password => 'p@ssw0rd'
 }
@@ -29,7 +29,7 @@ Enabling Auto-Login (when the machine is bound to a Active Directory):
 
 ```puppet
 class { 'windows_autologin':
-  ensure   => 'enabled',
+  ensure   => 'present',
   domain   => 'mydomain',
   username => 'myuser',
   password => 'p@ssw0rd'
@@ -39,7 +39,7 @@ class { 'windows_autologin':
 Disabling Auto-Login:
 ```puppet
 class { 'windows_autologin':
-  ensure => 'disabled'
+  ensure => 'absent'
 }
 ```
 
