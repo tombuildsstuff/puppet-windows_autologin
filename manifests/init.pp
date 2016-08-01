@@ -40,19 +40,19 @@ class windows_autologin(
           validate_string($username)
           validate_string($password)
 
-          registry_value { "${registry_path}\AutoAdminLogon":
+          registry_value { "${registry_path}\\AutoAdminLogon":
             ensure  => present,
             type    => dword,
             data    => 1
           }
 
-          registry_value { "${registry_path}\DefaultUserName":
+          registry_value { "${registry_path}\\DefaultUserName":
             ensure => present,
             type   => string,
             data   => $username
           }
 
-          registry_value { "${registry_path}\DefaultPassword":
+          registry_value { "${registry_path}\\DefaultPassword":
             ensure => present,
             type   => string,
             data   => $password
@@ -61,18 +61,18 @@ class windows_autologin(
 
         default:
         {
-          registry_value { "${registry_path}\AutoAdminLogon":
+          registry_value { "${registry_path}\\AutoAdminLogon":
             ensure => present,
             type   => dword,
             data   => 0
           }
 
-          registry_value { "${registry_path}\DefaultUserName":
+          registry_value { "${registry_path}\\DefaultUserName":
             ensure => absent,
             type   => string
           }
 
-          registry_value { "${registry_path}\DefaultPassword":
+          registry_value { "${registry_path}\\DefaultPassword":
             ensure => absent,
             type   => string
           }
