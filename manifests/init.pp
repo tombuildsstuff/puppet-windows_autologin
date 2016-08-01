@@ -29,61 +29,60 @@ class windows_autologin(
   case downcase($::osfamily)
   {
     'windows':
-    {
-      $registry_path = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
-
-      case downcase($ensure)
       {
-        'enabled':
+        $registry_path = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+        case downcase($ensure)
         {
-          validate_string($domain)
-          validate_string($username)
-          validate_string($password)
+          'enabled':
+          {
+            validate_string($domain)
+            validate_string($username)
+            validate_string($password)
 
-          registry_value { "${registry_path}\\AutoAdminLogon":
-            ensure  => present,
-            type    => dword,
-            data    => 1
+            registry_value { "${registry_path}\\AutoAdminLogon":
+              ensure => present,
+              type   => dword,
+              data   => 1,
+            }
+
+            registry_value { "${registry_path}\\DefaultUserName":
+              ensure => present,
+              type   => string,
+              data   => $username,
+            }
+
+            registry_value { "${registry_path}\\DefaultPassword":
+              ensure => present,
+              type   => string,
+              data   => $password,
+            }
           }
 
-          registry_value { "${registry_path}\\DefaultUserName":
-            ensure => present,
-            type   => string,
-            data   => $username
-          }
+          default:
+          {
+            registry_value { "${registry_path}\\AutoAdminLogon":
+              ensure => present,
+              type   => dword,
+              data   => 0,
+            }
 
-          registry_value { "${registry_path}\\DefaultPassword":
-            ensure => present,
-            type   => string,
-            data   => $password
+            registry_value { "${registry_path}\\DefaultUserName":
+              ensure => absent,
+              type   => string,
+            }
+
+            registry_value { "${registry_path}\\DefaultPassword":
+              ensure => absent,
+              type   => string,
+            }
           }
         }
 
-        default:
-        {
-          registry_value { "${registry_path}\\AutoAdminLogon":
-            ensure => present,
-            type   => dword,
-            data   => 0
-          }
-
-          registry_value { "${registry_path}\\DefaultUserName":
-            ensure => absent,
-            type   => string
-          }
-
-          registry_value { "${registry_path}\\DefaultPassword":
-            ensure => absent,
-            type   => string
-          }
-        }
       }
 
-    }
-
-    default:
-    {
-      fail('This module only supports Windows')
-    }
+      default:
+      {
+        fail('This module only supports Windows')
+      }
   }
 }
