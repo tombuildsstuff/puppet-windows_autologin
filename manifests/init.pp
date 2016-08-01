@@ -24,7 +24,7 @@ class windows_autologin(
   $password = undef
 )
 {
-  validate_string($ensure)
+  validate_re($ensure, ['^(enabled|disabled)$'])
 
   case downcase($::osfamily)
   {
